@@ -9,9 +9,10 @@ import Button from "./Button";
 import useAuthModal from "@/hooks/useAuthModal";
 import { useSupabaseClient } from "@supabase/auth-helpers-react"
 import { useUser } from "@/hooks/useUser";
-import { FaUserAlt } from "react-icons/fa";
 import { toast } from "react-hot-toast"
 import usePlayer from "@/hooks/usePlayer";
+import useUploadModal from "@/hooks/useUploadModal";
+import { AiOutlinePlus } from "react-icons/ai";
 
 interface HeaderProps {
     children: React.ReactNode
@@ -27,6 +28,7 @@ const Header: React.FC<HeaderProps> = ({
     const supabaseClient = useSupabaseClient()
     const { user } = useUser()
     const player = usePlayer()
+    const uploadModal = useUploadModal()
 
     const handleLogout = async () => {
         const { error } = await supabaseClient.auth.signOut()
@@ -39,6 +41,14 @@ const Header: React.FC<HeaderProps> = ({
         } else {
             toast.success('Logged out!')
         }
+    }
+
+    const onClick = () => {
+        if (!user) {
+            return authModal.onOpen()
+        }
+
+        return uploadModal.onOpen()
     }
 
     return ( 
@@ -72,6 +82,12 @@ const Header: React.FC<HeaderProps> = ({
                         className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition"
                     >
                         <BiSearch className="text-black" size={20}/>
+                    </button>
+                    <button
+                        onClick={onClick}
+                        className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition"
+                    >
+                        <AiOutlinePlus className="text-black" size={20}/>
                     </button>
                 </div>
                 <div className="flex justify-between items-center gap-x-4">
