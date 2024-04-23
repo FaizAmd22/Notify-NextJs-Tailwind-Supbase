@@ -102,14 +102,14 @@ const Header: React.FC<HeaderProps> = ({
                         </div>
                     ) : (
                         <>
-                            <div>
+                            {/* <div>
                                 <Button 
                                     onClick={authModal.onOpen}
                                     className="bg-transparent text-neutral-300 font-medium"
                                 >
                                     Sign up
                                 </Button>
-                            </div>
+                            </div> */}
                             <div>
                                 <Button 
                                     onClick={authModal.onOpen}

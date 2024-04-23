@@ -2,7 +2,7 @@ const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
     images: {
-      domains: ["maswvxeautrvefnhovcw.supabase.co"]
+      domains: ["ovqqdcwcysjnerzhwlse.supabase.co"]
     },
   
     webpack: (config, { isServer }) => {
